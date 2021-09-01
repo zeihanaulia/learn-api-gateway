@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+
+  accounts:
+    build:
+      context: ../
+      dockerfile: deployments/Dockerfile.accounts
+    container_name: accounts-service
+    ports:
+      - 3001:3001
+
+  catalogs:
+    build:
+      context: ../
+      dockerfile: deployments/Dockerfile.catalogs
+    container_name: catalogs-service
+    ports:
+      - 3002:3002
+
+  orders:
+    build:
+      context: ../
+      dockerfile: deployments/Dockerfile.orders
+    container_name: orders-service
+    ports:
+      - 3003:3003
