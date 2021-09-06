@@ -60,12 +60,14 @@ func service() http.Handler {
 	r.Use(middleware.RequestID)
 	r.Use(middleware.Logger)
 
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Orders Service"))
-	})
+	r.Route("/catalogs", func(r chi.Router) {
+		r.Get("/", func(w http.ResponseWriter, r *http.Request) {
+			w.Write([]byte("Orders Service"))
+		})
 
-	r.Post("/create", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Create a New Purchase Order"))
+		r.Post("/create", func(w http.ResponseWriter, r *http.Request) {
+			w.Write([]byte("Create a New Purchase Order"))
+		})
 	})
 
 	return r
